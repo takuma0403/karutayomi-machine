@@ -3,7 +3,7 @@
     background: var(--color-surface);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    min-height: 200px;
+    min-height: 320px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,12 +90,12 @@
 @media (max-width: 768px) {
     .poem-display {
         padding: var(--spacing-lg);
-        min-height: 150px;
+        min-height: 270px;
     }
 
     .poem-kami,
     .poem-shimo {
-        font-size: 1.125rem;
+        font-size: 1rem;
     }
 
     .poem-author {

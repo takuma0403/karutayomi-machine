@@ -39,6 +39,18 @@ function App() {
     }
   }, [gameState.lastPlayedPoem]);
 
+  // 終了ボタン押下時のハンドラ
+  const handleEndGame = () => {
+    setShowCurrentPoem(false);
+    endGame();
+  };
+
+  // スキップボタン押下時のハンドラ
+  const handleSkip = () => {
+    setShowCurrentPoem(false);
+    skipToNext();
+  };
+
   return (
     <div className="app">
       <header className="app-header">
@@ -53,21 +65,23 @@ function App() {
           />
         )}
 
-        <PoemDisplay 
-          poem={displayPoem}
-          onToggle={handleTogglePoem}
-          isShowingCurrent={showCurrentPoem}
-        />
+        {gameState.status !== 'idle' && (
+          <PoemDisplay 
+            poem={displayPoem}
+            onToggle={handleTogglePoem}
+            isShowingCurrent={showCurrentPoem}
+          />
+        )}
 
         <GameControls
           status={gameState.status}
           playMode={gameState.playMode}
           isWaiting={isWaiting}
           onStart={startGame}
-          onEnd={endGame}
+          onEnd={handleEndGame}
           onPause={pauseGame}
           onResume={resumeGame}
-          onSkip={skipToNext}
+          onSkip={handleSkip}
           onToggleMode={togglePlayMode}
         />
 
