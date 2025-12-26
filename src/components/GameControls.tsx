@@ -72,12 +72,17 @@ export const GameControls = ({
 
       {isActive && (
         <div className="mode-controls">
-          <button 
-            className={`btn btn-mode ${playMode === 'auto' ? 'active' : ''}`}
-            onClick={onToggleMode}
-          >
-            {playMode === 'auto' ? '自動進行モード' : 'マニュアル進行モード'}
-          </button>
+          <div className="toggle-container">
+            <label className="toggle-label">自動読み上げ</label>
+            <label className="toggle-switch">
+              <input
+                type="checkbox"
+                checked={playMode === 'auto'}
+                onChange={onToggleMode}
+              />
+              <span className="toggle-slider"></span>
+            </label>
+          </div>
           {isWaiting && playMode === 'manual' && (
             <p className="mode-hint">再開ボタンを押して次の歌へ</p>
           )}

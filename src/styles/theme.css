@@ -1,16 +1,17 @@
 :root {
-    /* 和風カラーパレット */
-    --color-primary: #8B4513;
-    /* 茶色 */
-    --color-secondary: #D4AF37;
-    /* 金色 */
-    --color-background: #FFF8DC;
-    /* コーンシルク */
+    /* カラーパレット */
+    --color-primary: #0E3149;
+    /* メイン：深い青 */
+    --color-secondary: #CEC4D8;
+    /* サブ：淡い紫 */
+    --color-accent: #D6174B;
+    /* アクセント：紅色 */
+    --color-background: #F5F5F5;
+    /* 背景：明るいグレー */
     --color-surface: #FFFFFF;
-    --color-text-primary: #2C1810;
-    --color-text-secondary: #5D4E37;
-    --color-accent: #DC143C;
-    /* 紅色 */
+    --color-text-primary: #0E3149;
+    --color-text-secondary: #5A5A5A;
+    --color-text-light: #FFFFFF;
 
     /* スペーシング */
     --spacing-xs: 0.5rem;
@@ -20,5 +21,5 @@
     --spacing-xl: 3rem;
 
     /* フォント */
-    --font-family: 'Noto Serif JP', serif;
+    --font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
 }

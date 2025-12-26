@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1 className="app-title">百人一首 読み上げ機</h1>
+        <h1 className="app-title">かるた読み</h1>
       </header>
 
       <main className="app-main">
