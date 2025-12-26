@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useGameState } from './hooks/useGameState';
 import { AudioPlayer } from './components/AudioPlayer';
 import { GameControls } from './components/GameControls';
@@ -19,8 +20,13 @@ function App() {
     getCurrentPoem,
   } = useGameState();
 
+  const [isPressingPoem, setIsPressingPoem] = useState(false);
+
   const currentPoem = getCurrentPoem();
   const currentPoemId = currentPoem?.id || null;
+
+  // タップ/クリック中は現在の歌を表示、それ以外は最後に再生された歌を表示
+  const displayPoem = isPressingPoem ? currentPoem : gameState.lastPlayedPoem;
 
   return (
     <div className="app">
@@ -36,7 +42,11 @@ function App() {
           />
         )}
 
-        <PoemDisplay poem={gameState.lastPlayedPoem} />
+        <PoemDisplay 
+          poem={displayPoem}
+          onPressStart={() => setIsPressingPoem(true)}
+          onPressEnd={() => setIsPressingPoem(false)}
+        />
 
         <GameControls
           status={gameState.status}
@@ -69,4 +79,5 @@ function App() {
 }
 
 export default App;
+
 

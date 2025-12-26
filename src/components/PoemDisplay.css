@@ -10,6 +10,13 @@
     align-items: center;
     gap: var(--spacing-md);
     border: 2px solid var(--color-primary);
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s ease;
+}
+
+.poem-display:active {
+    transform: scale(0.98);
 }
 
 .poem-display.empty {
@@ -21,6 +28,13 @@
     font-style: italic;
     text-align: center;
     margin: 0;
+}
+
+.poem-hint {
+    color: var(--color-accent);
+    font-size: 0.875rem;
+    text-align: center;
+    margin: var(--spacing-xs) 0 0 0;
 }
 
 .poem-number {
