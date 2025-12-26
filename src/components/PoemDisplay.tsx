@@ -3,55 +3,31 @@ import './PoemDisplay.css';
 
 interface PoemDisplayProps {
   poem: Poem | null;
-  onPressStart?: () => void;
-  onPressEnd?: () => void;
+  onToggle?: () => void;
+  isShowingCurrent?: boolean;
 }
 
-export const PoemDisplay = ({ poem, onPressStart, onPressEnd }: PoemDisplayProps) => {
-  const handleMouseDown = () => {
-    onPressStart?.();
-  };
-
-  const handleMouseUp = () => {
-    onPressEnd?.();
-  };
-
-  const handleMouseLeave = () => {
-    onPressEnd?.();
-  };
-
-  const handleTouchStart = () => {
-    onPressStart?.();
-  };
-
-  const handleTouchEnd = () => {
-    onPressEnd?.();
+export const PoemDisplay = ({ poem, onToggle, isShowingCurrent }: PoemDisplayProps) => {
+  const handleClick = () => {
+    onToggle?.();
   };
 
   if (!poem) {
     return (
       <div 
         className="poem-display empty"
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
+        onClick={handleClick}
       >
         <p className="poem-placeholder">音声再生後に歌が表示されます</p>
-        <p className="poem-hint">タップで現在の歌を表示</p>
+        <p className="poem-hint">タップで現在の歌を{isShowingCurrent ? '非表示' : '表示'}</p>
       </div>
     );
   }
 
   return (
     <div 
-      className="poem-display"
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseLeave}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
+      className={`poem-display ${isShowingCurrent ? 'showing-current' : ''}`}
+      onClick={handleClick}
     >
       <div className="poem-number">第{poem.id}首</div>
       <div className="poem-content">
@@ -59,6 +35,9 @@ export const PoemDisplay = ({ poem, onPressStart, onPressEnd }: PoemDisplayProps
         <p className="poem-shimo">{poem.shimoNoKu}</p>
       </div>
       <div className="poem-author">{poem.author}</div>
+      {isShowingCurrent && (
+        <div className="current-indicator">現在再生中</div>
+      )}
     </div>
   );
 };

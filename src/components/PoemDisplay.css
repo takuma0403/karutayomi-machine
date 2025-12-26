@@ -12,11 +12,17 @@
     border: 2px solid var(--color-primary);
     cursor: pointer;
     user-select: none;
-    transition: transform 0.1s ease;
+    transition: all 0.2s ease;
+    position: relative;
 }
 
 .poem-display:active {
     transform: scale(0.98);
+}
+
+.poem-display.showing-current {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 12px rgba(214, 23, 75, 0.2);
 }
 
 .poem-display.empty {
@@ -35,6 +41,18 @@
     font-size: 0.875rem;
     text-align: center;
     margin: var(--spacing-xs) 0 0 0;
+}
+
+.current-indicator {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background: var(--color-accent);
+    color: var(--color-text-light);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
 }
 
 .poem-number {

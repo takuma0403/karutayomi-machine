@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useGameState } from './hooks/useGameState';
 import { AudioPlayer } from './components/AudioPlayer';
 import { GameControls } from './components/GameControls';
@@ -20,13 +20,24 @@ function App() {
     getCurrentPoem,
   } = useGameState();
 
-  const [isPressingPoem, setIsPressingPoem] = useState(false);
+  const [showCurrentPoem, setShowCurrentPoem] = useState(false);
 
   const currentPoem = getCurrentPoem();
   const currentPoemId = currentPoem?.id || null;
 
-  // タップ/クリック中は現在の歌を表示、それ以外は最後に再生された歌を表示
-  const displayPoem = isPressingPoem ? currentPoem : gameState.lastPlayedPoem;
+  // トグル表示中は現在の歌を表示、それ以外は最後に再生された歌を表示
+  const displayPoem = showCurrentPoem ? currentPoem : gameState.lastPlayedPoem;
+
+  const handleTogglePoem = () => {
+    setShowCurrentPoem(prev => !prev);
+  };
+
+  // 音声再生が終わったら(lastPlayedPoemが更新されたら)、現在の歌の表示を非表示にする
+  useEffect(() => {
+    if (gameState.lastPlayedPoem) {
+      setShowCurrentPoem(false);
+    }
+  }, [gameState.lastPlayedPoem]);
 
   return (
     <div className="app">
@@ -44,8 +55,8 @@ function App() {
 
         <PoemDisplay 
           poem={displayPoem}
-          onPressStart={() => setIsPressingPoem(true)}
-          onPressEnd={() => setIsPressingPoem(false)}
+          onToggle={handleTogglePoem}
+          isShowingCurrent={showCurrentPoem}
         />
 
         <GameControls
@@ -79,5 +90,7 @@ function App() {
 }
 
 export default App;
+
+
 
 
