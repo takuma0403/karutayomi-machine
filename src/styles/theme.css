@@ -1,0 +1,24 @@
+:root {
+    /* 和風カラーパレット */
+    --color-primary: #8B4513;
+    /* 茶色 */
+    --color-secondary: #D4AF37;
+    /* 金色 */
+    --color-background: #FFF8DC;
+    /* コーンシルク */
+    --color-surface: #FFFFFF;
+    --color-text-primary: #2C1810;
+    --color-text-secondary: #5D4E37;
+    --color-accent: #DC143C;
+    /* 紅色 */
+
+    /* スペーシング */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* フォント */
+    --font-family: 'Noto Serif JP', serif;
+}

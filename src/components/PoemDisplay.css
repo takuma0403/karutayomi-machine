@@ -1,0 +1,72 @@
+.poem-display {
+    padding: var(--spacing-xl);
+    background: var(--color-surface);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+    border: 2px solid var(--color-secondary);
+}
+
+.poem-display.empty {
+    border: 2px dashed var(--color-text-secondary);
+}
+
+.poem-placeholder {
+    color: var(--color-text-secondary);
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+}
+
+.poem-number {
+    font-size: 1rem;
+    color: var(--color-secondary);
+    font-weight: bold;
+    font-family: var(--font-family);
+}
+
+.poem-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+}
+
+.poem-kami,
+.poem-shimo {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--color-text-primary);
+    margin: 0;
+    font-family: var(--font-family);
+    font-weight: 500;
+}
+
+.poem-author {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    font-weight: bold;
+    margin-top: var(--spacing-sm);
+    font-family: var(--font-family);
+}
+
+@media (max-width: 768px) {
+    .poem-display {
+        padding: var(--spacing-lg);
+        min-height: 150px;
+    }
+
+    .poem-kami,
+    .poem-shimo {
+        font-size: 1.125rem;
+    }
+
+    .poem-author {
+        font-size: 1rem;
+    }
+}
