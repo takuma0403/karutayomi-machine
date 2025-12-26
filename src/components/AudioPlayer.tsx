@@ -43,7 +43,16 @@ export const AudioPlayer = ({ poemId, voiceType, isPlaying, onEnded }: AudioPlay
   // 再生状態の制御
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio || poemId === null) return;
+    if (!audio) return;
+
+    // poemIdがnullの場合は音声を停止してリセット
+    if (poemId === null) {
+      audio.pause();
+      audio.currentTime = 0;
+      audio.src = '';
+      setCurrentPoemId(null);
+      return;
+    }
 
     if (isPlaying && currentPoemId === poemId) {
       const playPromise = audio.play();
